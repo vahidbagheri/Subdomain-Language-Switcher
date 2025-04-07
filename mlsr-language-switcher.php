@@ -3,7 +3,7 @@
 Plugin Name: Subdomain Language Switcher
 Description: مدیریت زبان‌ها و ریدایرکت بین ساب‌دامین‌ها بر اساس انتخاب زبان کاربر
 Version: 1.1
-Author: ChatGPT & User
+Author: vahid bagheri
 */
 
 if (!defined('ABSPATH')) exit;
