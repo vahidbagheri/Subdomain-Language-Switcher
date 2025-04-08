@@ -120,7 +120,7 @@ class Subdomain_Language_Switcher {
                 <table class="form-table" id="language-table">
                     <thead>
                         <tr><th>نام زبان</th><th>لینک</th>
-                        <!-- <th>آدرس پرچم</th> -->
+                        <th>آدرس پرچم</th>
                         <th>عملیات</th></tr>
                     </thead>
                     <tbody>
@@ -128,7 +128,7 @@ class Subdomain_Language_Switcher {
                             <tr>
                                 <td><input name="<?= $this->option_name ?>[<?= $index ?>][name]" value="<?= esc_attr($lang['name']) ?>" /></td>
                                 <td><input name="<?= $this->option_name ?>[<?= $index ?>][url]" value="<?= esc_attr($lang['url']) ?>" /></td>
-                                <!-- <td><input name="</?= $this->option_name ?>[</?= $index ?>][flag]" value="</?= esc_attr($lang['flag'] ?? '') ?>" /></td> -->
+                                <td><input name="<?= $this->option_name ?>[<?= $index ?>][flag]" value="<?= esc_attr($lang['flag'] ?? '') ?>" /></td>
                                 <td><button class="remove-row button">حذف</button></td>
                             </tr>
                         <?php endforeach; ?>
