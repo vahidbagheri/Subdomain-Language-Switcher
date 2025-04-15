@@ -142,7 +142,7 @@ class Subdomain_Language_Switcher {
                 <?php endforeach; ?>
             </select>
         </div>
-        <script>
+        <!-- <script>
             document.addEventListener("DOMContentLoaded", function () {
                 const select = document.getElementById("language-switcher-select");
                 select.addEventListener("change", function () {
@@ -153,6 +153,36 @@ class Subdomain_Language_Switcher {
                         document.cookie = "preferred_lang=; path=/; domain=.trendyflight.com.tr; max-age=0";
                         // تنظیم کوکی جدید برای دامنه اصلی و ساب‌دامین‌ها
                         document.cookie = "preferred_lang=" + encodeURIComponent(url) + "; path=/; domain=.trendyflight.com.tr; max-age=" + (60*60*24*30);
+                        window.location.href = url;
+                    }
+                });
+            });
+        </script> -->
+
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+                const select = document.getElementById("language-switcher-select");
+                select.addEventListener("change", function () {
+                    const url = this.value;
+                    const currentUrl = window.location.protocol + "//" + window.location.host;
+                    if (url && url !== currentUrl) {
+                        // استخراج دامنه اصلی برای تنظیم کوکی
+                        const hostnameParts = window.location.hostname.split('.');
+                        let rootDomain = window.location.hostname;
+                        if (hostnameParts.length >= 2) {
+                            rootDomain = '.' + hostnameParts.slice(-2).join('.');
+                            // هندل کردن دامنه‌هایی مثل co.uk
+                            if (hostnameParts.slice(-2).join('.') === 'co.uk' && hostnameParts.length >= 3) {
+                                rootDomain = '.' + hostnameParts.slice(-3).join('.');
+                            }
+                        }
+
+                        // پاک کردن کوکی قبلی
+                        document.cookie = "preferred_lang=; path=/; domain=" + rootDomain + "; max-age=0";
+
+                        // تنظیم کوکی جدید
+                        document.cookie = "preferred_lang=" + encodeURIComponent(url) + "; path=/; domain=" + rootDomain + "; max-age=" + (60*60*24*30);
+                        
                         window.location.href = url;
                     }
                 });
